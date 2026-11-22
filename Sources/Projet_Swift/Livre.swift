@@ -73,7 +73,14 @@ class LivreNumerique:Livre{
 func EnregistrerLivre() {
     print("--- Enregistrement d'un livre ---")
 
-    print("Entrez le titre : ")
+    print("Combien de livre(s) voulez-vous enregistrer??")
+    guard let nbb = readLine(), let nb=Int(nbb) else{
+        print("Mauvaise entrée")
+        return
+    }
+    for i in 1...nb {  
+    
+    print("Entrez le titre #\(i) : ")
     guard let titre = readLine(), !titre.isEmpty else {
         print("Aucun titre entré")
         return
@@ -126,4 +133,6 @@ func EnregistrerLivre() {
         default:
             print("Type de livre invalide")
         }
+        
+    }
 }
