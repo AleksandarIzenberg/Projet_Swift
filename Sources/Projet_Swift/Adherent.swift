@@ -23,7 +23,6 @@ class Adherent {
     }
 
     func retournerLivre(_ livre: Livre) {
-        // on cherche le livre dans la liste des emprunts
         if let position = livresEmpruntes.firstIndex(where: { $0 === livre }) {
             livresEmpruntes.remove(at: position)
             livre.retourner()

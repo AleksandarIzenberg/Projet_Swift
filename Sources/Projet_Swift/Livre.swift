@@ -15,7 +15,6 @@ class Livre {
         print("Titre : \(titre) | Auteur : \(auteur) | État : \(etat)")
     }
 
-    // Retourne true si l'emprunt a réussi, false si le livre est déjà emprunté
     func emprunter() -> Bool {
         if estDisponible {
             estDisponible = false

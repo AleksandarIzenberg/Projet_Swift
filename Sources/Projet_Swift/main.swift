@@ -1,8 +1,6 @@
 import Foundation
 
-// ---------- Fonctions de saisie ----------
-
-// Demande un texte et recommence tant que la réponse est vide
+// Verifye un texte 
 func lireTexte(_ message: String) -> String {
     while true {
         print(message, terminator: "")
@@ -18,7 +16,7 @@ func lireTexte(_ message: String) -> String {
     }
 }
 
-// Demande un nombre entier et recommence tant que la réponse n'est pas un nombre
+// Verifier un nombre entier
 func lireEntier(_ message: String) -> Int {
     while true {
         let texte = lireTexte(message)
@@ -50,7 +48,7 @@ func afficherMenu() {
     print("5- Emprunter un livre")
     print("6- Retourner un livre")
     print("7- Afficher les emprunts")
-    print("8- Lancer les tests demandés")
+    // print("8- Lancer les tests demandés")
     print("0- Quitter")
 }
 
@@ -59,7 +57,7 @@ func enregistrerLivres(dans bibliotheque: Bibliotheque) {
     let nombre = lireEntierPositif("Combien de livres voulez-vous enregistrer ? ")
 
     for i in 1...nombre {
-        print("\nLivre \(i) :")
+        print("\nLivre \(i)")
         let titre = lireTexte("Titre : ")
         let auteur = lireTexte("Auteur : ")
 
@@ -109,51 +107,7 @@ func retournerUnLivre(_ adherent: Adherent, dans bibliotheque: Bibliotheque) {
     }
 }
 
-// ---------- Les tests demandés dans le sujet ----------
-
-func lancerLesTests() {
-    print("\n===== 1. Création de la bibliothèque =====")
-    let biblio = Bibliotheque()
-    print("Bibliothèque créée.")
-
-    print("\n===== 2. Ajout de trois livres =====")
-    let livre1 = LivrePapier(titre: "Gouverneurs de la rosée", auteur: "Jacques Roumain", nombrePages: 220)
-    let livre2 = LivreNumerique(titre: "Swift pour débutants", auteur: "Jean Pierre", tailleFichierMo: 12)
-    let livre3 = LivrePapier(titre: "Compère Général Soleil", auteur: "Jacques Stephen Alexis", nombrePages: 400)
-    biblio.ajouterLivre(livre1)
-    biblio.ajouterLivre(livre2)
-    biblio.ajouterLivre(livre3)
-
-    print("\n===== 3. Création d'un adhérent =====")
-    let adherent = Adherent(nom: "Lorvensky")
-    print("Adhérent créé : \(adherent.nom)")
-
-    print("\n===== 4. Affichage du catalogue =====")
-    biblio.afficherCatalogue()
-
-    print("\n===== 5. Emprunt d'un livre =====")
-    adherent.emprunterLivre(livre2)
-
-    print("\n===== 6. Emprunt d'un livre déjà emprunté =====")
-    adherent.emprunterLivre(livre2)
-
-    print("\n===== 7. Retour d'un livre =====")
-    adherent.retournerLivre(livre2)
-
-    print("\n===== 8. Livres empruntés par l'adhérent =====")
-    adherent.emprunterLivre(livre1)
-    adherent.afficherEmprunts()
-
-    print("\n===== Test bonus : limite de 3 livres =====")
-    let livre4 = LivreNumerique(titre: "Introduction à la cybersécurité", auteur: "Marie Louis", tailleFichierMo: 8)
-    biblio.ajouterLivre(livre4)
-    adherent.emprunterLivre(livre2)
-    adherent.emprunterLivre(livre3)
-    adherent.emprunterLivre(livre4)
-    adherent.afficherEmprunts()
-}
-
-// ---------- Programme principal ----------
+// --- Programme principal ---
 
 let bibliotheque = Bibliotheque()
 var adherent: Adherent? = nil
@@ -185,8 +139,6 @@ while continuer {
         } else {
             print("Créez d'abord un adhérent (option 4).")
         }
-    case 8:
-        lancerLesTests()
     case 0:
         continuer = false
         print("Fermeture du programme...")
